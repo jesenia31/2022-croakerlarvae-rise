@@ -10,6 +10,7 @@ Discussed our project
 Introduction to what we are going to be working with
 Handed out contract
 Email with recap of our discussion and things to download
+<<<<<<< HEAD
 
 
 #June 1
@@ -32,4 +33,6 @@ Began reading papers
 
 
 
+=======
+>>>>>>> 704cf266903e812a3c43f728f83aa232db6bf742
 
