@@ -1,0 +1,13 @@
+---
+title: "Summer 2022 lab notebook"
+output: html_notebook
+---
+
+#May 31
+
+Lunch with mentor (Zoe)
+Discussed our project
+Introduction to what we are going to be working with
+Handed out contract
+Email with recap of our discussion and thingd to download
+
