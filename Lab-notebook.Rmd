@@ -9,5 +9,27 @@ Lunch with mentor (Zoe)
 Discussed our project
 Introduction to what we are going to be working with
 Handed out contract
-Email with recap of our discussion and thingd to download
+Email with recap of our discussion and things to download
+
+
+#June 1
+
+Went to the lab at noon
+Signed up and made an account in GitHub
+Started using R Studio
+Created a notebook and repository
+Saved the papers in a Mendeley folder
+Began reading papers
+
+
+
+
+
+
+
+```{python}
+```
+
+
+
 
