@@ -10,7 +10,6 @@ Discussed our project
 Introduction to what we are going to be working with
 Handed out contract
 Email with recap of our discussion and things to download
-<<<<<<< HEAD
 
 
 #June 1
@@ -23,16 +22,10 @@ Saved the papers in a Mendeley folder
 Began reading papers
 
 
+#June 2
 
-
-
-
-
-```{python}
-```
-
-
-
-=======
->>>>>>> 704cf266903e812a3c43f728f83aa232db6bf742
+Read papers in the lab and printed some
+Wrote questions to better understand some terminology and asked Zoë 
+Started doing a rough draft about what I will say in tomorrow's session at 1:30pm
+Wrote a summary of what I've understood so far from the papers 
 
