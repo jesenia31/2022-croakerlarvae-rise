@@ -4,16 +4,13 @@ output: html_notebook
 ---
 
 #May 31
-
-Lunch with mentor (Zoe)
+Lunch with mentor (Zoë)
 Discussed our project
 Introduction to what we are going to be working with
 Handed out contract
 Email with recap of our discussion and things to download
 
-
 #June 1
-
 Went to the lab at noon
 Signed up and made an account in GitHub
 Started using R Studio
@@ -21,57 +18,58 @@ Created a notebook and repository
 Saved the papers in a Mendeley folder
 Began reading papers
 
-
 #June 2
-
 Read papers in the lab and printed some
 Wrote questions to better understand some terminology and asked Zoë 
 Started doing a rough draft about what I will say in tomorrow's session at 1:30pm
 Wrote a summary of what I've understood so far from the papers 
 
 #June 3
-
 Read papers related to larvae-fish
 Talked about our trip to the Marine Reserve, what to bring, at what time we will leave and the week's itinerary (field sampling, fish measurements)
 Practiced what I am going to say at the Seminar 1
 Started taking the lessons on how to install Swirl and how to use it
 
 #June 6
-
 Went to the field station and took photos of the larvae fish of the Atlantic croaker from 1995
 Took 11 pictures of tows 1 and 2 (each) from August 9, 1995, from the side and the top
 Took measurements of its height and wrote it on a spreadsheet
 
 #June 7
-
 Continued taking pictures of the vials from August 9, September 14 and September 20, 1995
 
-
 #June 8
-
 Attended the seminar where we discussed our question set
-Did some coding lessons 1-5 & 7-9
+Did some coding lessons from R Programming 1-5 & 7-9
 Finished the vials from September 20 and September 28
 Took 110 pictures of the fish
 Help with the sorting of the fish from 12:30am-4:00am
 
 #June 9
-
 Returned to the dorms from the Rutgers Marine Field Station 
 
 #June 10
-
-Did the 10th coding lesson 
+Did the 10th coding lesson from R Programming 
 Started doing the chart with the information recovered from the fish from 1995
 
 #June 13
-
 Continued reading papers
 Moved papers from Mendeley to Zotero due to problems with plugin
 Started reading new papers 
 Started mini proposal assignment that's due on Wednesday
 
 #June 14
-
 Finished mini proposal assignment
 Read some papers about temperature, morphology and climate change
+Downloaded the lessons I was supposed to do in the beginning
+Did lessons 1 & 2 from Exploratory data analysis
+
+#June 15
+Workshop and seminar in Busch Campus from 12pm until 4pm
+Read some papers at the dorm
+
+#June 16
+Reviewed my mini proposal and made some corrections to it as recommended
+Installed ObjectJ as a pluggin for ImageJ
+Downloaded the photos of the fish to ObjectJ, prepared the objects and columns with its respective titles
+Did lessons 2-5 from Exploratory data analysis
