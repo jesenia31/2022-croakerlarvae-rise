@@ -72,4 +72,9 @@ Read some papers at the dorm
 Reviewed my mini proposal and made some corrections to it as recommended
 Installed ObjectJ as a pluggin for ImageJ
 Downloaded the photos of the fish to ObjectJ, prepared the objects and columns with its respective titles
-Did lessons 2-8 from Exploratory data analysis
+Did lessons 2-7 from Exploratory data analysis
+
+#June 20
+Updated the chart from Google Drive with the data Zoë collected on Friday
+Started writing the approach, assignment that's due on Wednesday
+Did some coding lessons 8-10
