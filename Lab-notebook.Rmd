@@ -78,3 +78,8 @@ Did lessons 2-7 from Exploratory data analysis
 Updated the chart from Google Drive with the data Zoë collected on Friday
 Started writing the approach, assignment that's due on Wednesday
 Did some coding lessons 8-10
+
+#June 21
+Practiced taking the measurements of the fish using ObjectJ
+Did lessons 2 and 3 from Getting and Cleaning Data
+Revised the mini proposal 
