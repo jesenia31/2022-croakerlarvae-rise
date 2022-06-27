@@ -94,3 +94,6 @@ Did lessons 9 and 11 from Statistical Inference
 Did lessons 12-14 from Statistical Inference
 Revised the approach with the feedback received yesterday
 Started taking measurements of the fish (800-811)
+
+#June 24
+Continued taking measurements of the fish (812-835)
