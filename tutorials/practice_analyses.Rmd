@@ -7,6 +7,10 @@ Here we will practice some analyses to use on the larval fish morphology data.
 
 We're using a R Markdown Document. Here (in the white space) we can type normally. Within chunks (grey) we have to start the line with a hash (#) to type normal text as notes. If we don't use a hash (#) R will try to run it as code. 
 
+In order to best understand this code, I recommend running it line by line. As long as your cursor is on a line of code, that code will run if you 'control'+'return'. Alternatively, you can run code by using the -->Run button in the top right corner of this window. All code that you run will show up in your Console below, but will only be accessible later if it is saved in this R Markdown Document. 
+
+Want to learn more about R Markdown Documents? This is a helpful video. https://www.youtube.com/watch?v=tKUufzpoHDE
+
 To insert a new chunk, click the green +C button up top, or press option, command, 'i'. 
 
 Each chunk needs to have language (r for us) and a name of what's happening with no symbols in the first line within the brackets. For example, in the first one it is {r setup}. You can't repeat the name of what's happening in chunks. 
