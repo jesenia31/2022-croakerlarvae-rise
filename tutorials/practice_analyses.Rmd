@@ -31,11 +31,11 @@ Bring in data stored as csvs (Comma Separated Values)
 - Any empty cell should be filed with 'NA'
 
 ```{r load csvs}
-photos <- read_csv("tutorials/DataSheetPhotos_Practice.csv")
+photos <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/tutorials/DataSheetPhotos_Practice.csv")
 
-measurements <- read_csv("tutorials/Measurements_practice.csv")
+measurements <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/tutorials/Measurements_practice.csv")
 
-icthy_data <- read_csv("tutorials/icthy_data_Practice.csv")
+icthy_data <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/tutorials/icthy_data_Practice.csv")
 
 
 ```
@@ -58,6 +58,8 @@ It appears that the photos data frame has some extra useless columns, let's dele
 View(photos)
 #keep columns 1:7
 photos_reduced <- photos[,1:7] #this tells us to make a new data frame extracting all rows from columns 1:7 (column = after comma, row = before comma]) in photos data frame
+
+View(photos_reduced)
 ```
 
 We also don't want the data from icthy_data that's not for our focal species
