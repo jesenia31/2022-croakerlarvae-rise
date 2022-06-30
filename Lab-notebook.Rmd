@@ -105,4 +105,12 @@ Edited the mini proposal and started reading about how to write the abstract
 #June 28
 Edited and finished mini proposal
 Wrote the abstract
-Continued taking measurements of the fish (866-675)
+Continued taking measurements of the fish (866-875)
+
+#June 29
+Workshop from 12-2pm
+Seminar 2-4pm
+Watched videos of cleaning data in R
+
+#June 30
+Continued taking measurements of the fish (876-)
