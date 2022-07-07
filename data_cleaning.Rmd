@@ -34,5 +34,25 @@ Pull in data sheet
 ```{r}
 DataSheetPhotos_1995_Micro_undu_only <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/DataSheetPhotos_1995_Micro_undu_only.csv")
 View(DataSheetPhotos_1995_Micro_undu_only)
+
+#Removed row 117 due to fish lost 
+DataSheetPhotos_1995_Micro_undu_only <- DataSheetPhotos_1995_Micro_undu_only %>% 
+  filter(Code!="00916")
+```
+
+Add new column to pull out the code column 
+```{r}
+atlantic_croaker_1995_measurements.r <- atlantic_croaker_1995_measurements.r %>% 
+  mutate(Code=DataSheetPhotos_1995_Micro_undu_only$Code)
+```
+
+Combine the two data sheets as one
+```{r}
+atlantic_croaker_1995_mphotos <- left_join(atlantic_croaker_1995_measurements.r, DataSheetPhotos_1995_Micro_undu_only, by= "Code")
+```
+
+Add the temperature sheet
+```{r}
+
 ```
 
