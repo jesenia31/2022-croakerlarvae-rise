@@ -53,6 +53,40 @@ atlantic_croaker_1995_mphotos <- left_join(atlantic_croaker_1995_measurements.r,
 
 Add the temperature sheet
 ```{r}
+icthy_data <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/icthy_data.csv")
+View(icthy_data)
+```
 
+See the structures
+```{r}
+str(atlantic_croaker_1995_mphotos)
+str(icthy_data)
+```
+
+Make new data frame and delete some columns
+```{r}
+cols_drop <- c("FL", "SL", "TL")
+icthy_data_reduced <- icthy_data %>% 
+  select(-any_of(cols_drop)) %>% 
+  rename(Tow_date=Date) %>% 
+  mutate(Tow_date=(ymd(Tow_date))) %>% 
+  rename(Tow_ID=Tow)
+```
+
+
+```{r}
+atlantic_croaker1995_measuremts <- atlantic_croaker_1995_mphotos %>% 
+  rename(Tow_date=`Tow Date`) %>% 
+  mutate(Tow_date=(mdy(Tow_date)))
+```
+
+```{r}
+atlantic_croaker1995 <- inner_join(atlantic_croaker1995_measuremts, icthy_data_reduced, by=c("Tow_date", "Tow_ID"))
+```
+
+```{r}
+atlantic_croaker1995 <- atlantic_croaker1995 %>% 
+  filter(Species=="undulatus") %>%
+  unique()
 ```
 
