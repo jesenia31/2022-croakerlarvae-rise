@@ -116,6 +116,19 @@ Watched videos of cleaning data in R
 Continued taking measurements of the fish (876-900)
 Reviewed abstract's feedback and ways to edit it
 
+#July 1
+Finished measuring the fish (901-921)
+
 #July 5
 Measured Justin's fish
 Edited the abstract
+Did the practice_analyses.Rmd
+Started the PowerPoint presentation
+
+#July 6
+Seminar: How to communicate science effectively and how to structure the 5 min PowerPoint presentation
+Field day 
+
+#July 7
+Saw an introductory video on Rmarkdown
+Edited the PowerPoint presentation
