@@ -8,14 +8,43 @@ library(lubridate)
 library(tidyverse)
 ```
 
-Pull the csv files with Justin's measured photos
+Pull Justin's measurements
+```{r}
+NJ_data_final_JD <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/NJ_data_final_JD.csv")
+View(NJ_data_final_JD)
+```
+
+Pull the csv files with Justin's photos which I measured
 The odd rows represent measurements from the lateral side of the fish, and the even rows represent measurements from the dorsal side of the fish
 ```{r}
 atlantic_croaker_2017_Jmeasurements <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/atlantic_croaker_2017_Jmeasurements.csv")
 View(atlantic_croaker_2017_Jmeasurements)
 ```
 
-Merge columns to have the dorsal and lateral measurements in one row instead of two
+Create column to then merge them
+```{r}
+atlantic_croaker2017_justin_measurements <- atlantic_croaker_2017_Jmeasurements %>% 
+  mutate(spp_num=rep(1:(nrow(atlantic_croaker_2017_Jmeasurements)/2), each=2))
+  
+  
+atlantic_croaker2017JM <- atlantic_croaker2017_justin_measurements %>% 
+  group_by(spp_num) %>% 
+  summarise(across(2:14,~ max (.x, na.rm=TRUE)))
+```
+
+
 ```{r}
 
 ```
+
+
+```{r}
+
+```
+
+
+
+
+
+
+

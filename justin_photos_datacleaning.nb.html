@@ -1805,7 +1805,16 @@ The following objects are masked from ‘package:base’:
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Pull the csv files with Justin’s measured photos The odd rows
+<p>Pull Justin’s measurements</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkpfZGF0YV9maW5hbF9KRCA8LSByZWFkX2NzdihcIn4vRG9jdW1lbnRzL09uZURyaXZlIC0gYWd1YWRpbGxhLmludGVyLmVkdS9CUyBNaWNyb2Jpb2xvZ3kgSW50ZXIvSW50ZXJuc2hpcCBhbmQgb3Bwb3J0dW5pdGllcy9SSVNFIEludGVybnNoaXAvMjAyMi1jcm9ha2VybGFydmFlLXJpc2UvZGF0YS9OSl9kYXRhX2ZpbmFsX0pELmNzdlwiKVxuVmlldyhOSl9kYXRhX2ZpbmFsX0pEKVxuYGBgIn0= -->
+<pre class="r"><code>NJ_data_final_JD &lt;- read_csv(&quot;~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/NJ_data_final_JD.csv&quot;)
+View(NJ_data_final_JD)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Pull the csv files with Justin’s photos which I measured The odd rows
 represent measurements from the lateral side of the fish, and the even
 rows represent measurements from the dorsal side of the fish</p>
 <!-- rnb-text-end -->
@@ -1825,13 +1834,36 @@ dbl (14): n, Standardlength, Totallength, Depthatpec, Depthatanu...
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Merge columns to have the dorsal and lateral measurements in one row
-instead of two</p>
+<p>Create column to then merge them</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcjIwMTdfanVzdGluX21lYXN1cmVtZW50cyA8LSBhdGxhbnRpY19jcm9ha2VyXzIwMTdfSm1lYXN1cmVtZW50cyAlPiUgXG4gIG11dGF0ZShzcHBfbnVtPXJlcCgxOihucm93KGF0bGFudGljX2Nyb2FrZXJfMjAxN19KbWVhc3VyZW1lbnRzKS8yKSksIGVhY2g9MilcblxuYGBgIn0= -->
+<pre class="r"><code>atlantic_croaker2017_justin_measurements &lt;- atlantic_croaker_2017_Jmeasurements %&gt;% 
+  mutate(spp_num=rep(1:(nrow(atlantic_croaker_2017_Jmeasurements)/2)), each=2)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYG11dGF0ZSgpYDpcbiEgUHJvYmxlbSB3aGlsZSBjb21wdXRpbmcgYHNwcF9udW0gPVxuICByZXAoMToobnJvdyhhdGxhbnRpY19jcm9ha2VyXzIwMTdfSm1lYXN1cmVtZW50cykvMikpYC5cbuKcliBgc3BwX251bWAgbXVzdCBiZSBzaXplIDQwIG9yIDEsIG5vdCAyMC5cbkJhY2t0cmFjZTpcbiAxLiBhdGxhbnRpY19jcm9ha2VyXzIwMTdfSm1lYXN1cmVtZW50cyAlPiUgLi4uXG4gMy4gZHBseXI6OjptdXRhdGUuZGF0YS5mcmFtZSguLi4pXG4ifQ== -->
+<pre><code>Error in `mutate()`:
+! Problem while computing `spp_num =
+  rep(1:(nrow(atlantic_croaker_2017_Jmeasurements)/2))`.
+✖ `spp_num` must be size 40 or 1, not 20.
+Backtrace:
+ 1. atlantic_croaker_2017_Jmeasurements %&gt;% ...
+ 3. dplyr:::mutate.data.frame(...)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBjbGVhbmluZy0gSnVzdGluIHBob3RvcyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3Igc2V0dXAgfQpsaWJyYXJ5KGx1YnJpZGF0ZSkKbGlicmFyeSh0aWR5dmVyc2UpCmBgYAoKUHVsbCB0aGUgY3N2IGZpbGVzIHdpdGggSnVzdGluJ3MgbWVhc3VyZWQgcGhvdG9zClRoZSBvZGQgcm93cyByZXByZXNlbnQgbWVhc3VyZW1lbnRzIGZyb20gdGhlIGxhdGVyYWwgc2lkZSBvZiB0aGUgZmlzaCwgYW5kIHRoZSBldmVuIHJvd3MgcmVwcmVzZW50IG1lYXN1cmVtZW50cyBmcm9tIHRoZSBkb3JzYWwgc2lkZSBvZiB0aGUgZmlzaApgYGB7cn0KYXRsYW50aWNfY3JvYWtlcl8yMDE3X0ptZWFzdXJlbWVudHMgPC0gcmVhZF9jc3YoIn4vRG9jdW1lbnRzL09uZURyaXZlIC0gYWd1YWRpbGxhLmludGVyLmVkdS9CUyBNaWNyb2Jpb2xvZ3kgSW50ZXIvSW50ZXJuc2hpcCBhbmQgb3Bwb3J0dW5pdGllcy9SSVNFIEludGVybnNoaXAvMjAyMi1jcm9ha2VybGFydmFlLXJpc2UvZGF0YS9hdGxhbnRpY19jcm9ha2VyXzIwMTdfSm1lYXN1cmVtZW50cy5jc3YiKQpWaWV3KGF0bGFudGljX2Nyb2FrZXJfMjAxN19KbWVhc3VyZW1lbnRzKQpgYGAKCk1lcmdlIGNvbHVtbnMgdG8gaGF2ZSB0aGUgZG9yc2FsIGFuZCBsYXRlcmFsIG1lYXN1cmVtZW50cyBpbiBvbmUgcm93IGluc3RlYWQgb2YgdHdvCmBgYHtyfQoKYGBgCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBjbGVhbmluZy0gSnVzdGluIHBob3RvcyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3Igc2V0dXAgfQpsaWJyYXJ5KGx1YnJpZGF0ZSkKbGlicmFyeSh0aWR5dmVyc2UpCmBgYAoKUHVsbCBKdXN0aW4ncyBtZWFzdXJlbWVudHMKYGBge3J9Ck5KX2RhdGFfZmluYWxfSkQgPC0gcmVhZF9jc3YoIn4vRG9jdW1lbnRzL09uZURyaXZlIC0gYWd1YWRpbGxhLmludGVyLmVkdS9CUyBNaWNyb2Jpb2xvZ3kgSW50ZXIvSW50ZXJuc2hpcCBhbmQgb3Bwb3J0dW5pdGllcy9SSVNFIEludGVybnNoaXAvMjAyMi1jcm9ha2VybGFydmFlLXJpc2UvZGF0YS9OSl9kYXRhX2ZpbmFsX0pELmNzdiIpClZpZXcoTkpfZGF0YV9maW5hbF9KRCkKYGBgCgpQdWxsIHRoZSBjc3YgZmlsZXMgd2l0aCBKdXN0aW4ncyBwaG90b3Mgd2hpY2ggSSBtZWFzdXJlZApUaGUgb2RkIHJvd3MgcmVwcmVzZW50IG1lYXN1cmVtZW50cyBmcm9tIHRoZSBsYXRlcmFsIHNpZGUgb2YgdGhlIGZpc2gsIGFuZCB0aGUgZXZlbiByb3dzIHJlcHJlc2VudCBtZWFzdXJlbWVudHMgZnJvbSB0aGUgZG9yc2FsIHNpZGUgb2YgdGhlIGZpc2gKYGBge3J9CmF0bGFudGljX2Nyb2FrZXJfMjAxN19KbWVhc3VyZW1lbnRzIDwtIHJlYWRfY3N2KCJ+L0RvY3VtZW50cy9PbmVEcml2ZSAtIGFndWFkaWxsYS5pbnRlci5lZHUvQlMgTWljcm9iaW9sb2d5IEludGVyL0ludGVybnNoaXAgYW5kIG9wcG9ydHVuaXRpZXMvUklTRSBJbnRlcm5zaGlwLzIwMjItY3JvYWtlcmxhcnZhZS1yaXNlL2RhdGEvYXRsYW50aWNfY3JvYWtlcl8yMDE3X0ptZWFzdXJlbWVudHMuY3N2IikKVmlldyhhdGxhbnRpY19jcm9ha2VyXzIwMTdfSm1lYXN1cmVtZW50cykKYGBgCgpDcmVhdGUgY29sdW1uIHRvIHRoZW4gbWVyZ2UgdGhlbQpgYGB7cn0KYXRsYW50aWNfY3JvYWtlcjIwMTdfanVzdGluX21lYXN1cmVtZW50cyA8LSBhdGxhbnRpY19jcm9ha2VyXzIwMTdfSm1lYXN1cmVtZW50cyAlPiUgCiAgbXV0YXRlKHNwcF9udW09cmVwKDE6KG5yb3coYXRsYW50aWNfY3JvYWtlcl8yMDE3X0ptZWFzdXJlbWVudHMpLzIpLCBlYWNoPTIpKQogIAogIAphdGxhbnRpY19jcm9ha2VyMjAxN0pNIDwtIGF0bGFudGljX2Nyb2FrZXIyMDE3X2p1c3Rpbl9tZWFzdXJlbWVudHMgJT4lIAogIGdyb3VwX2J5KHNwcF9udW0pICU+JSAKICBzdW1tYXJpc2UoYWNyb3NzKDI6MTQsfiBtYXggKC54LCBuYS5ybT1UUlVFKSkpCmBgYAoKCmBgYHtyfQoKYGBgCgoKYGBge3J9CgpgYGAKCgoKCgoKCg==</div>
 
 
 
