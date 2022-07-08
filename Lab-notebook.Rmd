@@ -132,3 +132,9 @@ Field day
 #July 7
 Saw an introductory video on Rmarkdown
 Edited the PowerPoint presentation
+Started pulling data from "ObjectJ", converting it to csv files and then putting it on R
+Did data cleaning of the data sheets
+
+#July 8
+Brainstorm title for our project
+Pull Justin's data into R
