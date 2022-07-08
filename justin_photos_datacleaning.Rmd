@@ -6,6 +6,7 @@ output: html_notebook
 ```{r setup }
 library(lubridate)
 library(tidyverse)
+library(ggplot2)
 ```
 
 Pull Justin's measurements
@@ -26,7 +27,7 @@ Create column to then merge them
 atlantic_croaker2017_justin_measurements <- atlantic_croaker_2017_Jmeasurements %>% 
   mutate(spp_num=rep(1:(nrow(atlantic_croaker_2017_Jmeasurements)/2), each=2))
   
-  
+#merged the two columns 
 atlantic_croaker2017JM <- atlantic_croaker2017_justin_measurements %>% 
   group_by(spp_num) %>% 
   summarise(across(2:14,~ max (.x, na.rm=TRUE)))
@@ -35,19 +36,75 @@ atlantic_croaker2017JM <- atlantic_croaker2017_justin_measurements %>%
 linked_image_names <- c(seq(272,290, by = 1), 314)
 ```
 
-
+Add the code (id name of each fish) to the sheet I created
 ```{r}
-
+atlantic_croaker2017J_M <- atlantic_croaker2017JM %>% 
+  mutate(Code=linked_image_names)
 ```
 
-
+Add _Justin to the measurements
 ```{r}
-
+atlantic2017_justin <- NJ_data_final_JD %>% 
+  rename_with(~ paste(.x, "_Justin", sep=""),.cols=c(2:14))
 ```
 
+Merge columns together
+```{r}
+atlantic_croaker2017 <- inner_join(atlantic2017_justin, atlantic_croaker2017J_M, by="Code")
+```
+
+Code used: colnames(atlantic_croaker2017J_M)
+ "Standardlength"   "Totallength"      "Depthatpec"       "Depthatanus"     
+ "Pulsearea"        "Musclearea"       "Bodyarea"         "Cauddepth"        "Caudheight"      
+ "Caudarea"         "Bodywidth"        "Interoctdistance" "Eyediameter"        
 
 
+#Start creating the linear models
+##Standard Length
+```{r}
+SL_linear_model <- lm(Standardlength ~ standardlength_Justin, atlantic_croaker2017)
+summary(SL_linear_model)
+```
+Information recorded from the linear model
+y=mx+b
+m= 1.1178x-0.9465
+R-squared= 0.8659
+P value= 2.78e-09
 
+##Total Lenght
+```{r}
+TL_linear_model <- lm(Totallength ~ totallength_Justin, atlantic_croaker2017)
+summary(TL_linear_model)
 
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=totallength_Justin, y=Totallength)) +
+  geom_smooth(aes(x=totallength_Justin, y=Totallength), method = "lm") +
+  geom_abline(intercept = 0, slope = 1)
+```
+y=mx+b
+m= 1.11796-1.27534
+R-squared= 0.8764
+P value= 1.32e-09
 
+##Depth Pectoral
+```{r}
+DP_linear_model <- lm(Depthatpec ~ bodydepthpectoral_Justin, atlantic_croaker2017)
+summary(DP_linear_model)
+```
+y=mx+b
+m= 1.16066-0.45649
+R-squared=0.9164
+P value=3.86e-11
 
+##Depth Anus
+```{r}
+DA_linear_model <- lm(Depthatanus ~ bodydepthanus_Justin, atlantic_croaker2017)
+summary(DA_linear_model)
+```
+y=mx+b
+m=0.9988-0.3047
+R-squared=0.8441
+P value=1.09e-08
+
+##Propulsive Area
