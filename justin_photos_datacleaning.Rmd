@@ -30,6 +30,9 @@ atlantic_croaker2017_justin_measurements <- atlantic_croaker_2017_Jmeasurements 
 atlantic_croaker2017JM <- atlantic_croaker2017_justin_measurements %>% 
   group_by(spp_num) %>% 
   summarise(across(2:14,~ max (.x, na.rm=TRUE)))
+
+#copying linked image file names from ObjectJ
+linked_image_names <- c(seq(272,290, by = 1), 314)
 ```
 
 
