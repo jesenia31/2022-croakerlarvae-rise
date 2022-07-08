@@ -11,7 +11,7 @@
 
 
 
-<title>Data cleaning</title>
+<title>Data cleaning- Justin photos</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1762,139 +1762,76 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Data cleaning</h1>
+<h1 class="title toc-ignore">Data cleaning- Justin photos</h1>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<p>Put data files from csv and clean it and later merge it into a data
-frame.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmBgYCJ9 -->
-<pre class="r"><code>library(lubridate)
-library(tidyverse)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG5gYGAifQ== -->
+<pre class="r"><code>library(lubridate)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Pull the csv with the measurements Made a csv using ObjectJ plugin,
-taking measurements of the specimens from 1995 Odd rows are measurements
-from the lateral photos and the even rows are measurements from dorsal
-photos</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cyA8LSByZWFkX2NzdihcIn4vRG9jdW1lbnRzL09uZURyaXZlIC0gYWd1YWRpbGxhLmludGVyLmVkdS9CUyBNaWNyb2Jpb2xvZ3kgSW50ZXIvSW50ZXJuc2hpcCBhbmQgb3Bwb3J0dW5pdGllcy9SSVNFIEludGVybnNoaXAvMjAyMi1jcm9ha2VybGFydmFlLXJpc2UvZGF0YS9hdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzLmNzdlwiKVxuVmlldyhhdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzKVxuYGBgIn0= -->
-<pre class="r"><code>atlantic_croaker_1995_measurements &lt;- read_csv(&quot;~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/atlantic_croaker_1995_measurements.csv&quot;)
-View(atlantic_croaker_1995_measurements)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Eliminate a column</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cyA8LSBhdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzICU+JSBcbiAgbXV0YXRlKHNwcF9udW09cmVwKDE6KG5yb3coYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cykvMiksIGVhY2g9MikpXG52aWV3KGF0bGFudGljX2Nyb2FrZXJfMTk5NV9tZWFzdXJlbWVudHMpXG5cbmF0bGFudGljX2Nyb2FrZXJfMTk5NV9tZWFzdXJlbWVudHMuciA8LSBhdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzICU+JSBcbiAgZ3JvdXBfYnkoc3BwX251bSkgJT4lIFxuICBzdW1tYXJpc2UoYWNyb3NzKDI6MTQsIH4gbWF4KC54LCBuYS5ybT1UUlVFKSkpXG5gYGAifQ== -->
-<pre class="r"><code>atlantic_croaker_1995_measurements &lt;- atlantic_croaker_1995_measurements %&gt;% 
-  mutate(spp_num=rep(1:(nrow(atlantic_croaker_1995_measurements)/2), each=2))
-view(atlantic_croaker_1995_measurements)
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYbHVicmlkYXRl4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0cyBhcmUgbWFza2VkIGZyb20g4oCYcGFja2FnZTpiYXNl4oCZOlxuXG4gICAgZGF0ZSwgaW50ZXJzZWN0LCBzZXRkaWZmLCB1bmlvblxuIn0= -->
+<pre><code>
+Attaching package: ‘lubridate’
 
-atlantic_croaker_1995_measurements.r &lt;- atlantic_croaker_1995_measurements %&gt;% 
-  group_by(spp_num) %&gt;% 
-  summarise(across(2:14, ~ max(.x, na.rm=TRUE)))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Pull in data sheet</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5IDwtIHJlYWRfY3N2KFwifi9Eb2N1bWVudHMvT25lRHJpdmUgLSBhZ3VhZGlsbGEuaW50ZXIuZWR1L0JTIE1pY3JvYmlvbG9neSBJbnRlci9JbnRlcm5zaGlwIGFuZCBvcHBvcnR1bml0aWVzL1JJU0UgSW50ZXJuc2hpcC8yMDIyLWNyb2FrZXJsYXJ2YWUtcmlzZS9kYXRhL0RhdGFTaGVldFBob3Rvc18xOTk1X01pY3JvX3VuZHVfb25seS5jc3ZcIilcblZpZXcoRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5KVxuXG4jUmVtb3ZlZCByb3cgMTE3IGR1ZSB0byBmaXNoIGxvc3QgXG5EYXRhU2hlZXRQaG90b3NfMTk5NV9NaWNyb191bmR1X29ubHkgPC0gRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5ICU+JSBcbiAgZmlsdGVyKENvZGUhPVwiMDA5MTZcIilcbmBgYCJ9 -->
-<pre class="r"><code>DataSheetPhotos_1995_Micro_undu_only &lt;- read_csv(&quot;~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/DataSheetPhotos_1995_Micro_undu_only.csv&quot;)
-View(DataSheetPhotos_1995_Micro_undu_only)
+The following objects are masked from ‘package:base’:
 
-#Removed row 117 due to fish lost 
-DataSheetPhotos_1995_Micro_undu_only &lt;- DataSheetPhotos_1995_Micro_undu_only %&gt;% 
-  filter(Code!=&quot;00916&quot;)</code></pre>
+    date, intersect, setdiff, union</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4xIOKUgOKUgFxu4pyUIGdncGxvdDIgMy4zLjYgICAgIOKclCBwdXJyciAgIDAuMy40XG7inJQgdGliYmxlICAzLjEuNyAgICAg4pyUIGRwbHlyICAgMS4wLjlcbuKclCB0aWR5ciAgIDEuMi4wICAgICDinJQgc3RyaW5nciAxLjQuMFxu4pyUIHJlYWRyICAgMi4xLjIgICAgIOKclCBmb3JjYXRzIDAuNS4xXG7ilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG7inJYgbHVicmlkYXRlOjphcy5kaWZmdGltZSgpIG1hc2tzIGJhc2U6OmFzLmRpZmZ0aW1lKClcbuKcliBsdWJyaWRhdGU6OmRhdGUoKSAgICAgICAgbWFza3MgYmFzZTo6ZGF0ZSgpXG7inJYgZHBseXI6OmZpbHRlcigpICAgICAgICAgIG1hc2tzIHN0YXRzOjpmaWx0ZXIoKVxu4pyWIGx1YnJpZGF0ZTo6aW50ZXJzZWN0KCkgICBtYXNrcyBiYXNlOjppbnRlcnNlY3QoKVxu4pyWIGRwbHlyOjpsYWcoKSAgICAgICAgICAgICBtYXNrcyBzdGF0czo6bGFnKClcbuKcliBsdWJyaWRhdGU6OnNldGRpZmYoKSAgICAgbWFza3MgYmFzZTo6c2V0ZGlmZigpXG7inJYgbHVicmlkYXRlOjp1bmlvbigpICAgICAgIG1hc2tzIGJhc2U6OnVuaW9uKClcbiJ9 -->
+<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+── Attaching packages ─────────────────────────── tidyverse 1.3.1 ──
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.7     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.2     ✔ forcats 0.5.1
+── Conflicts ────────────────────────────── tidyverse_conflicts() ──
+✖ lubridate::as.difftime() masks base::as.difftime()
+✖ lubridate::date()        masks base::date()
+✖ dplyr::filter()          masks stats::filter()
+✖ lubridate::intersect()   masks base::intersect()
+✖ dplyr::lag()             masks stats::lag()
+✖ lubridate::setdiff()     masks base::setdiff()
+✖ lubridate::union()       masks base::union()</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Add new column to pull out the code column</p>
+<p>Pull the csv files with Justin’s measured photos The odd rows
+represent measurements from the lateral side of the fish, and the even
+rows represent measurements from the dorsal side of the fish</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cy5yIDwtIGF0bGFudGljX2Nyb2FrZXJfMTk5NV9tZWFzdXJlbWVudHMuciAlPiUgXG4gIG11dGF0ZShDb2RlPURhdGFTaGVldFBob3Rvc18xOTk1X01pY3JvX3VuZHVfb25seSRDb2RlKVxuYGBgIn0= -->
-<pre class="r"><code>atlantic_croaker_1995_measurements.r &lt;- atlantic_croaker_1995_measurements.r %&gt;% 
-  mutate(Code=DataSheetPhotos_1995_Micro_undu_only$Code)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcl8yMDE3X0ptZWFzdXJlbWVudHMgPC0gcmVhZF9jc3YoXCJ+L0RvY3VtZW50cy9PbmVEcml2ZSAtIGFndWFkaWxsYS5pbnRlci5lZHUvQlMgTWljcm9iaW9sb2d5IEludGVyL0ludGVybnNoaXAgYW5kIG9wcG9ydHVuaXRpZXMvUklTRSBJbnRlcm5zaGlwLzIwMjItY3JvYWtlcmxhcnZhZS1yaXNlL2RhdGEvYXRsYW50aWNfY3JvYWtlcl8yMDE3X0ptZWFzdXJlbWVudHMuY3N2XCIpXG5cbmBgYCJ9 -->
+<pre class="r"><code>atlantic_croaker_2017_Jmeasurements &lt;- read_csv(&quot;~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/atlantic_croaker_2017_Jmeasurements.csv&quot;)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Combine the two data sheets as one</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcl8xOTk1X21waG90b3MgPC0gbGVmdF9qb2luKGF0bGFudGljX2Nyb2FrZXJfMTk5NV9tZWFzdXJlbWVudHMuciwgRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5LCBieT0gXCJDb2RlXCIpXG5gYGAifQ== -->
-<pre class="r"><code>atlantic_croaker_1995_mphotos &lt;- left_join(atlantic_croaker_1995_measurements.r, DataSheetPhotos_1995_Micro_undu_only, by= &quot;Code&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Add the temperature sheet</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWN0aHlfZGF0YSA8LSByZWFkX2NzdihcIn4vRG9jdW1lbnRzL09uZURyaXZlIC0gYWd1YWRpbGxhLmludGVyLmVkdS9CUyBNaWNyb2Jpb2xvZ3kgSW50ZXIvSW50ZXJuc2hpcCBhbmQgb3Bwb3J0dW5pdGllcy9SSVNFIEludGVybnNoaXAvMjAyMi1jcm9ha2VybGFydmFlLXJpc2UvZGF0YS9pY3RoeV9kYXRhLmNzdlwiKVxuVmlldyhpY3RoeV9kYXRhKVxuYGBgIn0= -->
-<pre class="r"><code>icthy_data &lt;- read_csv(&quot;~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/icthy_data.csv&quot;)
-View(icthy_data)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>See the structures</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKGF0bGFudGljX2Nyb2FrZXJfMTk5NV9tcGhvdG9zKVxuc3RyKGljdGh5X2RhdGEpXG5gYGAifQ== -->
-<pre class="r"><code>str(atlantic_croaker_1995_mphotos)
-str(icthy_data)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Make new data frame and delete some columns</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sc19kcm9wIDwtIGMoXCJGTFwiLCBcIlNMXCIsIFwiVExcIilcbmljdGh5X2RhdGFfcmVkdWNlZCA8LSBpY3RoeV9kYXRhICU+JSBcbiAgc2VsZWN0KC1hbnlfb2YoY29sc19kcm9wKSkgJT4lIFxuICByZW5hbWUoVG93X2RhdGU9RGF0ZSkgJT4lIFxuICBtdXRhdGUoVG93X2RhdGU9KHltZChUb3dfZGF0ZSkpKSAlPiUgXG4gIHJlbmFtZShUb3dfSUQ9VG93KVxuYGBgIn0= -->
-<pre class="r"><code>cols_drop &lt;- c(&quot;FL&quot;, &quot;SL&quot;, &quot;TL&quot;)
-icthy_data_reduced &lt;- icthy_data %&gt;% 
-  select(-any_of(cols_drop)) %&gt;% 
-  rename(Tow_date=Date) %&gt;% 
-  mutate(Tow_date=(ymd(Tow_date))) %&gt;% 
-  rename(Tow_ID=Tow)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Change column names from one data set to another</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcjE5OTVfbWVhc3VyZW10cyA8LSBhdGxhbnRpY19jcm9ha2VyXzE5OTVfbXBob3RvcyAlPiUgXG4gIHJlbmFtZShUb3dfZGF0ZT1gVG93IERhdGVgKSAlPiUgXG4gIG11dGF0ZShUb3dfZGF0ZT0obWR5KFRvd19kYXRlKSkpXG5gYGAifQ== -->
-<pre class="r"><code>atlantic_croaker1995_measuremts &lt;- atlantic_croaker_1995_mphotos %&gt;% 
-  rename(Tow_date=`Tow Date`) %&gt;% 
-  mutate(Tow_date=(mdy(Tow_date)))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Merge data sheets</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcjE5OTUgPC0gaW5uZXJfam9pbihhdGxhbnRpY19jcm9ha2VyMTk5NV9tZWFzdXJlbXRzLCBpY3RoeV9kYXRhX3JlZHVjZWQsIGJ5PWMoXCJUb3dfZGF0ZVwiLCBcIlRvd19JRFwiKSlcbmBgYCJ9 -->
-<pre class="r"><code>atlantic_croaker1995 &lt;- inner_join(atlantic_croaker1995_measuremts, icthy_data_reduced, by=c(&quot;Tow_date&quot;, &quot;Tow_ID&quot;))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Filter one species to the data sheet</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcjE5OTUgPC0gYXRsYW50aWNfY3JvYWtlcjE5OTUgJT4lIFxuICBmaWx0ZXIoU3BlY2llcz09XCJ1bmR1bGF0dXNcIilcbmBgYCJ9 -->
-<pre class="r"><code>atlantic_croaker1995 &lt;- atlantic_croaker1995 %&gt;% 
-  filter(Species==&quot;undulatus&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDAgQ29sdW1uczogMTRcbuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmRibCAoMTQpOiBuLCBTdGFuZGFyZGxlbmd0aCwgVG90YWxsZW5ndGgsIERlcHRoYXRwZWMsIERlcHRoYXRhbnUuLi5cblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
+<pre><code>Rows: 40 Columns: 14
+── Column specification ────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+dbl (14): n, Standardlength, Totallength, Depthatpec, Depthatanu...
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBjbGVhbmluZyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKUHV0IGRhdGEgZmlsZXMgZnJvbSBjc3YgYW5kIGNsZWFuIGl0IGFuZCBsYXRlciBtZXJnZSBpdCBpbnRvIGEgZGF0YSBmcmFtZS4KYGBge3Igc2V0dXB9CmxpYnJhcnkobHVicmlkYXRlKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgpQdWxsIHRoZSBjc3Ygd2l0aCB0aGUgbWVhc3VyZW1lbnRzCk1hZGUgYSBjc3YgdXNpbmcgT2JqZWN0SiBwbHVnaW4sIHRha2luZyBtZWFzdXJlbWVudHMgb2YgdGhlIHNwZWNpbWVucyBmcm9tIDE5OTUKT2RkIHJvd3MgYXJlIG1lYXN1cmVtZW50cyBmcm9tIHRoZSBsYXRlcmFsIHBob3RvcyBhbmQgdGhlIGV2ZW4gcm93cyBhcmUgbWVhc3VyZW1lbnRzIGZyb20gZG9yc2FsIHBob3RvcwpgYGB7cn0KYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cyA8LSByZWFkX2Nzdigifi9Eb2N1bWVudHMvT25lRHJpdmUgLSBhZ3VhZGlsbGEuaW50ZXIuZWR1L0JTIE1pY3JvYmlvbG9neSBJbnRlci9JbnRlcm5zaGlwIGFuZCBvcHBvcnR1bml0aWVzL1JJU0UgSW50ZXJuc2hpcC8yMDIyLWNyb2FrZXJsYXJ2YWUtcmlzZS9kYXRhL2F0bGFudGljX2Nyb2FrZXJfMTk5NV9tZWFzdXJlbWVudHMuY3N2IikKVmlldyhhdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzKQpgYGAKCkVsaW1pbmF0ZSBhIGNvbHVtbgpgYGB7cn0KYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cyA8LSBhdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzICU+JSAKICBtdXRhdGUoc3BwX251bT1yZXAoMToobnJvdyhhdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzKS8yKSwgZWFjaD0yKSkKdmlldyhhdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzKQoKI01lcmdlIGRhdGEKYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cy5yIDwtIGF0bGFudGljX2Nyb2FrZXJfMTk5NV9tZWFzdXJlbWVudHMgJT4lIAogIGdyb3VwX2J5KHNwcF9udW0pICU+JSAKICBzdW1tYXJpc2UoYWNyb3NzKDI6MTQsIH4gbWF4KC54LCBuYS5ybT1UUlVFKSkpCmBgYAoKUHVsbCBpbiBkYXRhIHNoZWV0IApgYGB7cn0KRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5IDwtIHJlYWRfY3N2KCJ+L0RvY3VtZW50cy9PbmVEcml2ZSAtIGFndWFkaWxsYS5pbnRlci5lZHUvQlMgTWljcm9iaW9sb2d5IEludGVyL0ludGVybnNoaXAgYW5kIG9wcG9ydHVuaXRpZXMvUklTRSBJbnRlcm5zaGlwLzIwMjItY3JvYWtlcmxhcnZhZS1yaXNlL2RhdGEvRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5LmNzdiIpClZpZXcoRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5KQoKI1JlbW92ZWQgcm93IDExNyBkdWUgdG8gZmlzaCBsb3N0IApEYXRhU2hlZXRQaG90b3NfMTk5NV9NaWNyb191bmR1X29ubHkgPC0gRGF0YVNoZWV0UGhvdG9zXzE5OTVfTWljcm9fdW5kdV9vbmx5ICU+JSAKICBmaWx0ZXIoQ29kZSE9IjAwOTE2IikKYGBgCgpBZGQgbmV3IGNvbHVtbiB0byBwdWxsIG91dCB0aGUgY29kZSBjb2x1bW4gCmBgYHtyfQphdGxhbnRpY19jcm9ha2VyXzE5OTVfbWVhc3VyZW1lbnRzLnIgPC0gYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cy5yICU+JSAKICBtdXRhdGUoQ29kZT1EYXRhU2hlZXRQaG90b3NfMTk5NV9NaWNyb191bmR1X29ubHkkQ29kZSkKYGBgCgpDb21iaW5lIHRoZSB0d28gZGF0YSBzaGVldHMgYXMgb25lCmBgYHtyfQphdGxhbnRpY19jcm9ha2VyXzE5OTVfbXBob3RvcyA8LSBsZWZ0X2pvaW4oYXRsYW50aWNfY3JvYWtlcl8xOTk1X21lYXN1cmVtZW50cy5yLCBEYXRhU2hlZXRQaG90b3NfMTk5NV9NaWNyb191bmR1X29ubHksIGJ5PSAiQ29kZSIpCmBgYAoKQWRkIHRoZSB0ZW1wZXJhdHVyZSBzaGVldApgYGB7cn0KaWN0aHlfZGF0YSA8LSByZWFkX2Nzdigifi9Eb2N1bWVudHMvT25lRHJpdmUgLSBhZ3VhZGlsbGEuaW50ZXIuZWR1L0JTIE1pY3JvYmlvbG9neSBJbnRlci9JbnRlcm5zaGlwIGFuZCBvcHBvcnR1bml0aWVzL1JJU0UgSW50ZXJuc2hpcC8yMDIyLWNyb2FrZXJsYXJ2YWUtcmlzZS9kYXRhL2ljdGh5X2RhdGEuY3N2IikKVmlldyhpY3RoeV9kYXRhKQpgYGAKClNlZSB0aGUgc3RydWN0dXJlcwpgYGB7cn0Kc3RyKGF0bGFudGljX2Nyb2FrZXJfMTk5NV9tcGhvdG9zKQpzdHIoaWN0aHlfZGF0YSkKYGBgCgpNYWtlIG5ldyBkYXRhIGZyYW1lIGFuZCBkZWxldGUgc29tZSBjb2x1bW5zCmBgYHtyfQpjb2xzX2Ryb3AgPC0gYygiRkwiLCAiU0wiLCAiVEwiKQppY3RoeV9kYXRhX3JlZHVjZWQgPC0gaWN0aHlfZGF0YSAlPiUgCiAgc2VsZWN0KC1hbnlfb2YoY29sc19kcm9wKSkgJT4lIAogIHJlbmFtZShUb3dfZGF0ZT1EYXRlKSAlPiUgCiAgbXV0YXRlKFRvd19kYXRlPSh5bWQoVG93X2RhdGUpKSkgJT4lIAogIHJlbmFtZShUb3dfSUQ9VG93KQpgYGAKCkNoYW5nZSBjb2x1bW4gbmFtZXMgZnJvbSBvbmUgZGF0YSBzZXQgdG8gYW5vdGhlcgpgYGB7cn0KYXRsYW50aWNfY3JvYWtlcjE5OTVfbWVhc3VyZW10cyA8LSBhdGxhbnRpY19jcm9ha2VyXzE5OTVfbXBob3RvcyAlPiUgCiAgcmVuYW1lKFRvd19kYXRlPWBUb3cgRGF0ZWApICU+JSAKICBtdXRhdGUoVG93X2RhdGU9KG1keShUb3dfZGF0ZSkpKQpgYGAKCk1lcmdlIGRhdGEgc2hlZXRzCmBgYHtyfQphdGxhbnRpY19jcm9ha2VyMTk5NSA8LSBpbm5lcl9qb2luKGF0bGFudGljX2Nyb2FrZXIxOTk1X21lYXN1cmVtdHMsIGljdGh5X2RhdGFfcmVkdWNlZCwgYnk9YygiVG93X2RhdGUiLCAiVG93X0lEIikpCmBgYAoKRmlsdGVyIG9uZSBzcGVjaWVzIHRvIHRoZSBkYXRhIHNoZWV0CmBgYHtyfQphdGxhbnRpY19jcm9ha2VyMTk5NSA8LSBhdGxhbnRpY19jcm9ha2VyMTk5NSAlPiUgCiAgZmlsdGVyKFNwZWNpZXM9PSJ1bmR1bGF0dXMiKSAlPiUKICB1bmlxdWUoKQpgYGAKCg==</div>
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Merge columns to have the dorsal and lateral measurements in one row
+instead of two</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YSBjbGVhbmluZy0gSnVzdGluIHBob3RvcyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3Igc2V0dXAgfQpsaWJyYXJ5KGx1YnJpZGF0ZSkKbGlicmFyeSh0aWR5dmVyc2UpCmBgYAoKUHVsbCB0aGUgY3N2IGZpbGVzIHdpdGggSnVzdGluJ3MgbWVhc3VyZWQgcGhvdG9zClRoZSBvZGQgcm93cyByZXByZXNlbnQgbWVhc3VyZW1lbnRzIGZyb20gdGhlIGxhdGVyYWwgc2lkZSBvZiB0aGUgZmlzaCwgYW5kIHRoZSBldmVuIHJvd3MgcmVwcmVzZW50IG1lYXN1cmVtZW50cyBmcm9tIHRoZSBkb3JzYWwgc2lkZSBvZiB0aGUgZmlzaApgYGB7cn0KYXRsYW50aWNfY3JvYWtlcl8yMDE3X0ptZWFzdXJlbWVudHMgPC0gcmVhZF9jc3YoIn4vRG9jdW1lbnRzL09uZURyaXZlIC0gYWd1YWRpbGxhLmludGVyLmVkdS9CUyBNaWNyb2Jpb2xvZ3kgSW50ZXIvSW50ZXJuc2hpcCBhbmQgb3Bwb3J0dW5pdGllcy9SSVNFIEludGVybnNoaXAvMjAyMi1jcm9ha2VybGFydmFlLXJpc2UvZGF0YS9hdGxhbnRpY19jcm9ha2VyXzIwMTdfSm1lYXN1cmVtZW50cy5jc3YiKQpWaWV3KGF0bGFudGljX2Nyb2FrZXJfMjAxN19KbWVhc3VyZW1lbnRzKQpgYGAKCk1lcmdlIGNvbHVtbnMgdG8gaGF2ZSB0aGUgZG9yc2FsIGFuZCBsYXRlcmFsIG1lYXN1cmVtZW50cyBpbiBvbmUgcm93IGluc3RlYWQgb2YgdHdvCmBgYHtyfQoKYGBgCg==</div>
 
 
 
@@ -1941,7 +1878,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("data_cleaning.Rmd");
+  window.initializeSourceEmbed("justin_photos_datacleaning.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
