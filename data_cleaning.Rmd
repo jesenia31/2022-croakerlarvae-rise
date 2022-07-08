@@ -19,7 +19,7 @@ atlantic_croaker_1995_measurements <- read_csv("~/Documents/OneDrive - aguadilla
 View(atlantic_croaker_1995_measurements)
 ```
 
-
+Eliminate a column
 ```{r}
 atlantic_croaker_1995_measurements <- atlantic_croaker_1995_measurements %>% 
   mutate(spp_num=rep(1:(nrow(atlantic_croaker_1995_measurements)/2), each=2))
@@ -73,17 +73,19 @@ icthy_data_reduced <- icthy_data %>%
   rename(Tow_ID=Tow)
 ```
 
-
+Change column names from one data set to another
 ```{r}
 atlantic_croaker1995_measuremts <- atlantic_croaker_1995_mphotos %>% 
   rename(Tow_date=`Tow Date`) %>% 
   mutate(Tow_date=(mdy(Tow_date)))
 ```
 
+Merge data sheets
 ```{r}
 atlantic_croaker1995 <- inner_join(atlantic_croaker1995_measuremts, icthy_data_reduced, by=c("Tow_date", "Tow_ID"))
 ```
 
+Filter one species to the data sheet
 ```{r}
 atlantic_croaker1995 <- atlantic_croaker1995 %>% 
   filter(Species=="undulatus") %>%
