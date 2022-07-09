@@ -138,3 +138,7 @@ Did data cleaning of the data sheets
 #July 8
 Brainstorm title for our project
 Pull Justin's data into R
+Used ggplot to create a linear model
+
+#July 9
+Finished creating linear models for Justin's data
