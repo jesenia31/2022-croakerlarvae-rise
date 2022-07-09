@@ -60,10 +60,18 @@ Code used: colnames(atlantic_croaker2017J_M)
 
 
 #Start creating the linear models
+
 ##Standard Length
 ```{r}
 SL_linear_model <- lm(Standardlength ~ standardlength_Justin, atlantic_croaker2017)
 summary(SL_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=standardlength_Justin, y=Standardlength)) +
+  geom_smooth(aes(x=standardlength_Justin, y=Standardlength), method = "lm")+
+  geom_abline(intercept=0, slope=1) +
+  ggtitle("Fish standard length measurements")
 ```
 Information recorded from the linear model
 y=mx+b
@@ -80,7 +88,8 @@ summary(TL_linear_model)
 ggplot(atlantic_croaker2017) +
   geom_point(aes(x=totallength_Justin, y=Totallength)) +
   geom_smooth(aes(x=totallength_Justin, y=Totallength), method = "lm") +
-  geom_abline(intercept = 0, slope = 1)
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish total length measurements")
 ```
 y=mx+b
 m= 1.11796-1.27534
@@ -91,6 +100,13 @@ P value= 1.32e-09
 ```{r}
 DP_linear_model <- lm(Depthatpec ~ bodydepthpectoral_Justin, atlantic_croaker2017)
 summary(DP_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=bodydepthpectoral_Justin, y=Depthatpec))+
+  geom_smooth(aes(x=bodydepthpectoral_Justin, y=Depthatpec), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Depth Pectoral Measurements")
 ```
 y=mx+b
 m= 1.16066-0.45649
@@ -101,6 +117,13 @@ P value=3.86e-11
 ```{r}
 DA_linear_model <- lm(Depthatanus ~ bodydepthanus_Justin, atlantic_croaker2017)
 summary(DA_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x= bodydepthanus_Justin, y=Depthatanus)) +
+  geom_smooth(aes(x= bodydepthanus_Justin, y=Depthatanus), method = "lm")+
+  geom_abline(intercept = 0, slope=1) +
+  ggtitle("Fish Depth at Anus Measurements")
 ```
 y=mx+b
 m=0.9988-0.3047
@@ -108,3 +131,154 @@ R-squared=0.8441
 P value=1.09e-08
 
 ##Propulsive Area
+```{r}
+PA_linear_model <- lm(Pulsearea ~ propulsivearea_Justin, atlantic_croaker2017)
+summary(PA_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017)+
+  geom_point(aes(x=propulsivearea_Justin, y=Pulsearea)) +
+  geom_smooth(aes(x=propulsivearea_Justin, y=Pulsearea), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Propulsive Area Measurements")
+```
+y=mx+b
+m= 1.124-1.847
+R-squared= 0.8598
+P value= 4.14e-09
+
+##Muscle Area
+```{r}
+MA_linear_model <- lm(Musclearea ~ musclearea_Justin, atlantic_croaker2017)
+summary(MA_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=musclearea_Justin, y=Musclearea)) +
+  geom_smooth(aes(x=musclearea_Justin, y=Musclearea), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Muscle Area Measurements")
+```
+y=mx+b
+m= 1.12668-0.82451
+R-squared= 0.9078
+P value= 9.33e-11
+
+##Body Area
+```{r}
+BA_linear_model <- lm(Bodyarea ~ bodyarea_Justin, atlantic_croaker2017)
+summary(BA_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=bodyarea_Justin, y=Bodyarea)) +
+  geom_smooth(aes(x=bodyarea_Justin, y=Bodyarea), method="lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Body Area Measurements")
+```
+y=mx+b
+m=1.08743-1.04866
+R-squared=0.8707
+P value=1.99e-09
+
+##Caudal Peduncle Depth
+```{r}
+CP_linear_model <- lm(Cauddepth ~ caudalpeduncledepth_Justin, atlantic_croaker2017)
+summary(CP_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=caudalpeduncledepth_Justin, y=Cauddepth)) +
+  geom_smooth(aes(x=caudalpeduncledepth_Justin, y=Cauddepth), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Caudal Peduncle Depth Measurements")
+```
+y=mx+b
+m= 1.029639 + 0.006023
+R-squared= 0.7838
+P value= 2.14e-07
+
+##Caudal Fin Height
+```{r}
+CF_linear_model <- lm(Caudheight ~ caudalfinheight_Justin, atlantic_croaker2017)
+summary(CF_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=caudalfinheight_Justin, y=Caudheight)) +
+  geom_smooth(aes(x=caudalfinheight_Justin, y=Caudheight), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Caudal Fin Height Measurements")
+```
+y=mx+b
+m= 0.6657 + 0.2973
+R-squared= 0.5838
+P value= 8.8e-05
+
+##Caudal Fin Area
+```{r}
+CA_linear_model <- lm(Caudarea ~ caudalfinarea_Justin, atlantic_croaker2017)
+summary(CA_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=caudalfinarea_Justin, y=Caudarea)) +
+  geom_smooth(aes(x=caudalfinarea_Justin, y=Caudarea), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Caudal Fin Area Measurements")
+```
+y=mx+b
+m=0.6457 + 0.3727
+R-squared=0.5273
+P value= 0.000289
+
+##Body Width
+```{r}
+BW_linear_model <- lm(Bodywidth ~ bodywidth_Justin, atlantic_croaker2017)
+summary(BW_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=bodywidth_Justin, y=Bodywidth)) +
+  geom_smooth(aes(x=bodywidth_Justin, y=Bodywidth), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Body Width Measurements")
+```
+y=mx+b
+m=0.6886-0.2114
+R-squared= 0.6553
+P value=1.54e-05
+
+##Eye Diameter
+```{r}
+ED_linear_model <- lm(Eyediameter ~ eyediameter_Justin, atlantic_croaker2017)
+summary(ED_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=eyediameter_Justin, y=Eyediameter)) +
+  geom_smooth(aes(x=eyediameter_Justin, y=Eyediameter), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Eye Diameter Measurements")
+```
+y=mx+b
+m= 1.13797-0.09974
+R-squared=0.7198
+P value= 2.29e-06
+
+##Interorbital Width
+```{r}
+IW_linear_model <- lm(Interoctdistance ~ interorbitalwidth_Justin, atlantic_croaker2017)
+summary(IW_linear_model)
+
+#make a ggplot
+ggplot(atlantic_croaker2017) +
+  geom_point(aes(x=interorbitalwidth_Justin, y=Interoctdistance)) +
+  geom_smooth(aes(x=interorbitalwidth_Justin, y=Interoctdistance), method = "lm") +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Fish Interorbital Width Measurements")
+```
+y=mx+b
+m= 0.9007 + 0.1275
+R-squared= 0.5505
+P value= 0.00018
