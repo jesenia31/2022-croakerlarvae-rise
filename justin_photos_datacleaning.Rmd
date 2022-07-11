@@ -62,7 +62,7 @@ Code used: colnames(atlantic_croaker2017J_M)
 #Start creating the linear models
 
 ##Standard Length
-```{r}
+```{r standard length}
 SL_linear_model <- lm(Standardlength ~ standardlength_Justin, atlantic_croaker2017)
 summary(SL_linear_model)
 
@@ -123,6 +123,7 @@ ggplot(atlantic_croaker2017) +
   geom_point(aes(x= bodydepthanus_Justin, y=Depthatanus)) +
   geom_smooth(aes(x= bodydepthanus_Justin, y=Depthatanus), method = "lm")+
   geom_abline(intercept = 0, slope=1) +
+  lims(x=c(0,max(atlantic_croaker2017$bodydepthanus_Justin)),y=c(0, max(atlantic_croaker2017$Depthatanus))) +
   ggtitle("Fish Depth at Anus Measurements")
 ```
 y=mx+b
@@ -242,6 +243,7 @@ ggplot(atlantic_croaker2017) +
   geom_point(aes(x=bodywidth_Justin, y=Bodywidth)) +
   geom_smooth(aes(x=bodywidth_Justin, y=Bodywidth), method = "lm") +
   geom_abline(intercept = 0, slope = 1) +
+  lims(x=c(0, max(atlantic_croaker2017$bodywidth_Justin)), y=c(0, max(atlantic_croaker2017$Bodywidth)))
   ggtitle("Fish Body Width Measurements")
 ```
 y=mx+b
@@ -282,3 +284,54 @@ y=mx+b
 m= 0.9007 + 0.1275
 R-squared= 0.5505
 P value= 0.00018
+
+
+
+
+
+# Converting Justin's measurements from 2017 to Jesenia's measurements
+colnames(atlantic_croaker1995)
+ [1] "spp_num"          "Standardlength"   "Totallength"      "Depthatpec"       "Depthatanus"     
+ [6] "Pulsearea"        "Musclearea"       "Bodyarea"         "Cauddepth"        "Caudheight"      
+[11] "Caudarea"         "Bodywidth"        "Interoctdistance" "Eyediameter"      "Code"            
+[16] "Spp"              "Tow_date"         "Tow_ID"           "Tow_num"          "Picture Date"    
+[21] "Time Start-End"   "Notes"            "Measurements"     "Genus"            "Species"         
+[26] "Survey"           "Preserve"         "Number"           "Location"        
+
+colnames(atlantic2017_justin)
+ [1] "Code"                       "standardlength_Justin"     
+ [3] "totallength_Justin"         "bodydepthpectoral_Justin"  
+ [5] "bodydepthanus_Justin"       "propulsivearea_Justin"     
+ [7] "bodyarea_Justin"            "musclearea_Justin"         
+ [9] "eyediameter_Justin"         "caudalpeduncledepth_Justin"
+[11] "caudalfinheight_Justin"     "caudalfinarea_Justin"      
+[13] "bodywidth_Justin"           "interorbitalwidth_Justin"  
+[15] "Date"                       "region"                    
+[17] "SST"    
+
+```{r}
+#Format
+at_croaker2017 <- atlantic2017_justin %>% 
+  mutate(Standardlength= 1.1178*standardlength_Justin - 0.9465,
+         Totallength=1.11796*totallength_Justin -1.27534,
+         Depthatpec= 1.16066*bodydepthpectoral_Justin -0.45649,
+         Depthatanus= 0.9988*bodydepthanus_Justin -0.3047,
+         Pulsearea= 1.124*propulsivearea_Justin -1.847,
+         Musclearea=1.12668*musclearea_Justin -0.82451,
+         Bodyarea= 1.08743*bodyarea_Justin -1.04866,
+         Cauddepth= 1.029639*caudalpeduncledepth_Justin + 0.006023,
+         Caudheight= 0.6657*caudalfinheight_Justin + 0.2973,
+         Caudarea= 0.6457*caudalfinarea_Justin + 0.3727,
+         Bodywidth= 0.6886*bodywidth_Justin -0.2114,
+         Eyediameter= 1.13797*eyediameter_Justin -0.09974,
+         Interoctdistance= 0.9007*interorbitalwidth_Justin + 0.1275, 
+         Spp= "Micropogonias undulatus") %>% 
+  rename(Tow_date=Date) %>% 
+  select(Spp, Tow_date, Code, Standardlength, Totallength, Depthatpec, Depthatanus, Bodyarea, Musclearea, Pulsearea, Bodywidth, Caudarea, Cauddepth, Caudheight, Eyediameter, Interoctdistance, SST)
+
+view(at_croaker2017)
+
+ggplot(at_croaker2017) +
+  geom_point(aes(x=standardlength_Justin, y=Standardlength)) 
+```
+
