@@ -15,6 +15,11 @@ NJ_data_final_JD <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Micr
 View(NJ_data_final_JD)
 ```
 
+Pull 1995 measurements
+```{r}
+atlantic_croaker1995 <- read_csv("data/atlantic_croaker1995.csv")
+```
+
 Pull the csv files with Justin's photos which I measured
 The odd rows represent measurements from the lateral side of the fish, and the even rows represent measurements from the dorsal side of the fish
 ```{r}
@@ -286,9 +291,6 @@ R-squared= 0.5505
 P value= 0.00018
 
 
-
-
-
 # Converting Justin's measurements from 2017 to Jesenia's measurements
 colnames(atlantic_croaker1995)
  [1] "spp_num"          "Standardlength"   "Totallength"      "Depthatpec"       "Depthatanus"     
@@ -333,5 +335,46 @@ view(at_croaker2017)
 
 ggplot(at_croaker2017) +
   geom_point(aes(x=standardlength_Justin, y=Standardlength)) 
+```
+
+colnames(atlantic_croaker1995)
+ [1] "spp_num"          "Standardlength"   "Totallength"      "Depthatpec"       "Depthatanus"     
+ [6] "Pulsearea"        "Musclearea"       "Bodyarea"         "Cauddepth"        "Caudheight"      
+[11] "Caudarea"         "Bodywidth"        "Interoctdistance" "Eyediameter"      "Code"            
+[16] "Spp"              "Tow_date"         "Tow_ID"           "Tow_num"          "Picture Date"    
+[21] "Time Start-End"   "Notes"            "Measurements"     "Genus"            "Species"         
+[26] "Survey.x"         "Preserve"         "Number"           "Location.x"       "...30"           
+[31] "Survey.y"         "Location.y"       "Time"             "Sudo"             "Bodo"            
+[36] "SuSal"            "BoSal"            "SuTemp"           "BoTemp"           "Tide"            
+[41] "Depth"            "LatDeg"           "Latitude"         "LongDeg"          "LONGITUD"        
+[46] "Secchi"           "SuPH"             "BoPH"             "Northing"         "Easting"         
+[51] "UTM"              "Edit"             "year"            
+ colnames(at_croaker2017)
+[1] "Spp"              "Tow_date"         "Code"             "Standardlength"   "Totallength"     
+[6] "Depthatpec"       "Depthatanus"      "Bodyarea"         "Musclearea"       "Pulsearea"       
+[11] "Bodywidth"        "Caudarea"         "Cauddepth"        "Caudheight"       "Eyediameter"     
+[16] "Interoctdistance" "SST" 
+
+create a new file that has the temperature in it
+```{r}
+atlantic_1995_croaker <- atlantic_croaker1995 %>% 
+  rename(SST=SuTemp) %>% 
+  select(Spp, Tow_date, Code, Standardlength, Totallength, Depthatpec, Depthatanus, Bodyarea, Musclearea, Pulsearea, Bodywidth, Caudarea, Cauddepth, Caudheight, Eyediameter, Interoctdistance, SST)
+View(atlantic_1995_croaker)
+```
+
+See if both columns match names
+```{r}
+colnames(atlantic_1995_croaker)==colnames(at_croaker2017)
+```
+
+
+```{r}
+atlantic_croaker_final <- rbind(atlantic_1995_croaker, at_croaker2017)
+view(atlantic_croaker_final)
+```
+
+```{r}
+write_csv(atlantic_croaker_final, file= "data/atlantic_croaker_final.csv")
 ```
 

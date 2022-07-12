@@ -84,6 +84,19 @@ Merge data sheets
 atlantic_croaker1995 <- inner_join(atlantic_croaker1995_measuremts, icthy_data_reduced, by=c("Tow_date", "Tow_ID"))
 ```
 
+Link to time data/temperature
+```{r}
+env_1995 <- read_csv("data/env_1995.csv")
+View(env_1995)
+
+#rename date first 
+env_1995 <- env_1995 %>% 
+  rename(Tow_date=Date)
+
+#join 
+atlantic_croaker1995 <- inner_join(atlantic_croaker1995, env_1995, by="Tow_date")
+```
+
 Filter one species to the data sheet
 ```{r}
 atlantic_croaker1995 <- atlantic_croaker1995 %>% 
@@ -91,3 +104,10 @@ atlantic_croaker1995 <- atlantic_croaker1995 %>%
   unique()
 ```
 
+Save
+```{r}
+write_csv(atlantic_croaker1995, file="data/atlantic_croaker1995.csv")
+```
+
+mutate=create a new column
+filter= select specific rows we want to keep
