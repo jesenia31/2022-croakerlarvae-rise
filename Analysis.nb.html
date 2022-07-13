@@ -1770,27 +1770,37 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgpXG5saWJyYXJ5KClcbmBgYCJ9 -->
-<pre class="r"><code>library()
-library()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmxpYnJhcnkoZ2dwbG90MilcbmBgYCJ9 -->
+<pre class="r"><code>library(lubridate)
+library(tidyverse)
+library(ggplot2)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Pull file</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcl9maW5hbCA8LSByZWFkX2NzdihcImRhdGEvYXRsYW50aWNfY3JvYWtlcl9maW5hbC5jc3ZcIilcblZpZXcoYXRsYW50aWNfY3JvYWtlcl9maW5hbClcbmBgYCJ9 -->
+<pre class="r"><code>atlantic_croaker_final &lt;- read_csv(&quot;data/atlantic_croaker_final.csv&quot;)
+View(atlantic_croaker_final)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Make new columns to answer hypothesis</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXRsYW50aWNfY3JvYWtlcl9maW5hbCA8LSBhdGxhbnRpY19jcm9ha2VyX2ZpbmFsICU+JSBcbiAgbXV0YXRlKGFzcGVjdF9yYXRpbz0oQ2F1ZGhlaWdodC9DYXVkYXJlYSleKDEvMiksIHNxdWFyZV9jYXVkYWxfcGVkdW5jbGVfZGVwdGhfZmFjdG9yPShDYXVkZGVwdGgvRGVwdGhhdHBlYyleMilcblxuYGBgIn0= -->
+<pre class="r"><code>atlantic_croaker_final &lt;- atlantic_croaker_final %&gt;% 
+  mutate(aspect_ratio=(Caudheight/Caudarea)^(1/2), square_caudal_peduncle_depth_factor=(Cauddepth/Depthatpec)^2)
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Structure 1. Type question 2. Make plot 3. Run statistical test 4.
 Answer question</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KYGBge3J9CmxpYnJhcnkoKQpsaWJyYXJ5KCkKYGBgCgpQdWxsIGZpbGUKYGBge3J9CgpgYGAKCk1ha2UgbmV3IGNvbHVtbnMgdG8gYW5zd2VyIGh5cG90aGVzaXMKYGBge3J9CgpgYGAKCgpTdHJ1Y3R1cmUKMS4gVHlwZSBxdWVzdGlvbgoyLiBNYWtlIHBsb3QKMy4gUnVuIHN0YXRpc3RpY2FsIHRlc3QKNC4gQW5zd2VyIHF1ZXN0aW9u</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KYGBge3Igc2V0dXB9CmxpYnJhcnkobHVicmlkYXRlKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShnZ3Bsb3QyKQpgYGAKClB1bGwgZmlsZQpgYGB7cn0KYXRsYW50aWNfY3JvYWtlcl9maW5hbCA8LSByZWFkX2NzdigiZGF0YS9hdGxhbnRpY19jcm9ha2VyX2ZpbmFsLmNzdiIpClZpZXcoYXRsYW50aWNfY3JvYWtlcl9maW5hbCkKYGBgCgpNYWtlIG5ldyBjb2x1bW5zIHRvIGFuc3dlciBoeXBvdGhlc2lzCmBgYHtyfQphdGxhbnRpY19jcm9ha2VyX2ZpbmFsIDwtIGF0bGFudGljX2Nyb2FrZXJfZmluYWwgJT4lIAogIG11dGF0ZShhc3BlY3RfcmF0aW89KENhdWRoZWlnaHQvQ2F1ZGFyZWEpXigxLzIpLCBzcXVhcmVfY2F1ZGFsX3BlZHVuY2xlX2RlcHRoX2ZhY3Rvcj0oQ2F1ZGRlcHRoL0RlcHRoYXRwZWMpXjIpClZpZXcoYXRsYW50aWNfY3JvYWtlcl9maW5hbCkKYGBgCgpTdHJ1Y3R1cmUKMS4gVHlwZSBxdWVzdGlvbgoyLiBNYWtlIHBsb3QKMy4gUnVuIHN0YXRpc3RpY2FsIHRlc3QKNC4gQW5zd2VyIHF1ZXN0aW9uCg==</div>
 
 
 

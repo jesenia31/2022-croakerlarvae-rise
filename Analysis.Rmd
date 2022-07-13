@@ -2,21 +2,24 @@
 title: "Analysis"
 output: html_notebook
 ---
-```{r}
-library()
-library()
+```{r setup}
+library(lubridate)
+library(tidyverse)
+library(ggplot2)
 ```
 
 Pull file
 ```{r}
-
+atlantic_croaker_final <- read_csv("data/atlantic_croaker_final.csv")
+View(atlantic_croaker_final)
 ```
 
 Make new columns to answer hypothesis
 ```{r}
-
+atlantic_croaker_final <- atlantic_croaker_final %>% 
+  mutate(aspect_ratio=(Caudheight/Caudarea)^(1/2), square_caudal_peduncle_depth_factor=(Cauddepth/Depthatpec)^2)
+View(atlantic_croaker_final)
 ```
-
 
 Structure
 1. Type question
