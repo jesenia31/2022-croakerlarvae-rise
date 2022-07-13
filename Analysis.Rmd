@@ -1,0 +1,25 @@
+---
+title: "Analysis"
+output: html_notebook
+---
+```{r}
+library()
+library()
+```
+
+Pull file
+```{r}
+
+```
+
+Make new columns to answer hypothesis
+```{r}
+
+```
+
+
+Structure
+1. Type question
+2. Make plot
+3. Run statistical test
+4. Answer question
