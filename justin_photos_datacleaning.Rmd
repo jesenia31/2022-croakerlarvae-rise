@@ -348,14 +348,15 @@ colnames(atlantic_croaker1995)
 [36] "SuSal"            "BoSal"            "SuTemp"           "BoTemp"           "Tide"            
 [41] "Depth"            "LatDeg"           "Latitude"         "LongDeg"          "LONGITUD"        
 [46] "Secchi"           "SuPH"             "BoPH"             "Northing"         "Easting"         
-[51] "UTM"              "Edit"             "year"            
+[51] "UTM"              "Edit"             "year"          
+
  colnames(at_croaker2017)
 [1] "Spp"              "Tow_date"         "Code"             "Standardlength"   "Totallength"     
 [6] "Depthatpec"       "Depthatanus"      "Bodyarea"         "Musclearea"       "Pulsearea"       
 [11] "Bodywidth"        "Caudarea"         "Cauddepth"        "Caudheight"       "Eyediameter"     
 [16] "Interoctdistance" "SST" 
 
-create a new file that has the temperature in it
+Create a new file that has the temperature in it
 ```{r}
 atlantic_1995_croaker <- atlantic_croaker1995 %>% 
   rename(SST=SuTemp) %>% 
@@ -374,6 +375,7 @@ atlantic_croaker_final <- rbind(atlantic_1995_croaker, at_croaker2017)
 view(atlantic_croaker_final)
 ```
 
+Save data in files
 ```{r}
 write_csv(atlantic_croaker_final, file= "data/atlantic_croaker_final.csv")
 ```

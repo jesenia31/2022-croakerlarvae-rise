@@ -142,3 +142,15 @@ Used ggplot to create a linear model
 
 #July 9
 Finished creating linear models for Justin's data
+
+#July 11
+Continued working on data cleaning for Justin's photos
+Started to R lessons
+
+#July 12
+Finished data cleaning with Justin's measurements and mine 
+Saved in the file
+Created new notebook to start the analysis
+2nd day of R lessons
+
+#July 13
