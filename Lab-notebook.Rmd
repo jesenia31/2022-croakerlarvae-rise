@@ -154,3 +154,8 @@ Created new notebook to start the analysis
 2nd day of R lessons
 
 #July 13
+Seminar, where we practiced our presentation and received feedback
+Edited the power point presentation
+
+#July 14
+Worked on my analysis and created different plots in order to understand what each one means, to later interpret the data and attach it to the results in PP
