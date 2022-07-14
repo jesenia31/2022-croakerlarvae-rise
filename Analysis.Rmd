@@ -32,7 +32,8 @@ Hypothesis:
 Fish from 1995 will have a higher total length and aspect ratio, and a lower square caudal peduncle depth factor compared to fish from 2017. 
 
 ```{r}
-#Make dataframe, 1995 & 2017 fish
+#Make dataframe for 1995 & 2017 fish
+##in order to create statistical tests
 atcroaker95 <- atlantic_croaker_final %>% 
   filter(Year==1995)
 
