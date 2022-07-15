@@ -159,3 +159,8 @@ Edited the power point presentation
 
 #July 14
 Worked on my analysis and created different plots in order to understand what each one means, to later interpret the data and attach it to the results in PP
+
+#July 15
+Continued working with the data analysis and data cleaning
+Fixed the measurements of the fix in ObjectJ and then pulled out a new data frame
+Started creating a script for the 5MP
