@@ -332,9 +332,6 @@ at_croaker2017 <- atlantic2017_justin %>%
   select(Spp, Tow_date, Code, Standardlength, Totallength, Depthatpec, Depthatanus, Bodyarea, Musclearea, Pulsearea, Bodywidth, Caudarea, Cauddepth, Caudheight, Eyediameter, Interoctdistance, SST)
 
 view(at_croaker2017)
-
-ggplot(at_croaker2017) +
-  geom_point(aes(x=standardlength_Justin, y=Standardlength)) 
 ```
 
 colnames(atlantic_croaker1995)

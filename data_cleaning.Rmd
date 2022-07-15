@@ -13,7 +13,7 @@ Pull the csv with the measurements
 Made a csv using ObjectJ plugin, taking measurements of the specimens from 1995
 Odd rows are measurements from the lateral photos and the even rows are measurements from dorsal photos
 ```{r}
-atlantic_croaker_1995_measurements <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/atlantic_croaker_1995_measurements.csv")
+atlantic_croaker_1995_measurements <- read_csv("~/Documents/OneDrive - aguadilla.inter.edu/BS Microbiology Inter/Internship and opportunities/RISE Internship/2022-croakerlarvae-rise/data/atlantic_croaker_1995_measurements_updated_scale.csv")
 View(atlantic_croaker_1995_measurements)
 ```
 
