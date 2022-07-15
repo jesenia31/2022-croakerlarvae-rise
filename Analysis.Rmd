@@ -28,6 +28,8 @@ Structure
 3. Run statistical test
 4. Answer question
 
+#Question set to answer first main question relating morphological traits within the years/location
+
 Hypothesis:
 Fish from 1995 will have a higher total length and aspect ratio, and a lower square caudal peduncle depth factor compared to fish from 2017. 
 
@@ -53,7 +55,7 @@ ggplot(data=atlantic_croaker_final) +
   geom_boxplot(aes(x=Year, y=aspect_ratio, group= Year))
 
 #Statistical test
-t.test(x=atcroaker95$aspect_ratio, y=atcroaker17$aspect_ratio, alternative = c("two.sided"))
+wilcox.test(x=atcroaker95$aspect_ratio, y=atcroaker17$aspect_ratio, alternative = c("two.sided"))
 ```
 
 Question 2:
@@ -68,7 +70,7 @@ ggplot(data=atlantic_croaker_final) +
   geom_boxplot(aes(x=Year, y=Totallength, group= Year))
 
 #Statistical analysis
-t.test(x=atcroaker95$Totallength, y=atcroaker17$Totallength , alternative=c("two.sided"))
+wilcox.test(x=atcroaker95$Totallength, y=atcroaker17$Totallength , alternative=c("two.sided"))
 ```
 
 Question 3:
@@ -77,12 +79,53 @@ Is square caudal peduncle depth factor lower in fish from 1995 than fish from 20
 #Make a plot
 ggplot(data= atlantic_croaker_final, aes(x=square_caudal_peduncle_depth_factor)) +
   geom_histogram() +
-  facet_wrap(~Year)
+  facet_wrap(~Year) 
 
 ggplot(data=atlantic_croaker_final) +
   geom_boxplot(aes(x=Year, y=square_caudal_peduncle_depth_factor, group= Year))
 
 #Statistical analysis
-t.test(x=atcroaker95$square_caudal_peduncle_depth_factor,  y=atcroaker17$square_caudal_peduncle_depth_factor, alternative = c("two.sided"))
+wilcox.test(x=atcroaker95$square_caudal_peduncle_depth_factor,  y=atcroaker17$square_caudal_peduncle_depth_factor, alternative = c("two.sided"))
+```
+
+#Question set 2 relating morphological traits and temperature within the years
+
+Question 1
+Aspect ratio
+```{r}
+#Linear model
+AR_linearmodel <- lm(aspect_ratio ~ SST, atlantic_croaker_final)
+summary(AR_linearmodel)
+
+#Plot
+ggplot(data=atlantic_croaker_final) +
+  geom_point(aes(x=SST, y=aspect_ratio, color=factor(Year))) +
+  geom_smooth(aes(x=SST, y=aspect_ratio), method = "lm")
+```
+
+Question 2
+Total length
+```{r}
+#Linear model
+TL_linearmodel <- lm(Totallength ~ SST, atlantic_croaker_final)
+summary(TL_linearmodel)
+
+#Plot
+ggplot(data = atlantic_croaker_final) +
+  geom_point(aes(x=SST, y=Totallength, color= factor(Year))) +
+  geom_smooth(aes(x= SST,y=Totallength), method = "lm")
+```
+
+Question 3
+Square caudal peduncle depth factor
+```{r}
+#Linear model
+CPDF_linearmodel <- lm(square_caudal_peduncle_depth_factor ~ SST, atlantic_croaker_final) 
+summary(CPDF_linearmodel)
+
+#Plot
+ggplot(data=atlantic_croaker_final) +
+  geom_point(aes(x= SST, y=square_caudal_peduncle_depth_factor, color=factor(Year))) +
+  geom_smooth(aes(x=SST, y= square_caudal_peduncle_depth_factor), method = "lm")
 ```
 
