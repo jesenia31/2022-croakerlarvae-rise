@@ -18,7 +18,7 @@ Make new columns to answer hypothesis
 ```{r}
 atlantic_croaker_final <- atlantic_croaker_final %>% 
   mutate(aspect_ratio=(Caudheight/Caudarea)^(1/2), square_caudal_peduncle_depth_factor=(Cauddepth/Depthatpec)^2, 
-         Year=year(Tow_date))
+         Year=year(Tow_date), Month=month(Tow_date))
 View(atlantic_croaker_final)
 ```
 
@@ -87,9 +87,10 @@ ggplot(data=atlantic_croaker_final) +
 #Statistical analysis
 wilcox.test(x=atcroaker95$square_caudal_peduncle_depth_factor,  y=atcroaker17$square_caudal_peduncle_depth_factor, alternative = c("two.sided"))
 ```
+In summary, there is no significance whether location influence morphological traits
+
 
 #Question set 2 relating morphological traits and temperature within the years
-
 Question 1
 Aspect ratio
 ```{r}
@@ -101,34 +102,97 @@ summary(AR_linearmodel)
 ggplot(data=atlantic_croaker_final) +
   geom_point(aes(x=SST, y=aspect_ratio, color=factor(Year))) +
   geom_smooth(aes(x=SST, y=aspect_ratio), method = "lm")
+
+ggplot(data=atlantic_croaker_final) +
+  geom_point(aes(x=SST, y=aspect_ratio)) +
+  geom_smooth(aes(x=SST, y=aspect_ratio), method = "lm") +
+  labs(x= "Temperature in Celsius", y= "Aspect Ratio", title = "Relationship between Aspect Ratio and Temperature") +
+  theme_bw()
 ```
 p-value: 0.001113
 
 Question 2
-Total length
+How does Total length vary with temperature?
 ```{r}
 #Linear model
 TL_linearmodel <- lm(Totallength ~ SST, atlantic_croaker_final)
 summary(TL_linearmodel)
 
-#Plot
+#Plot for reference
 ggplot(data = atlantic_croaker_final) +
   geom_point(aes(x=SST, y=Totallength, color= factor(Year))) +
   geom_smooth(aes(x= SST,y=Totallength), method = "lm")
+
+#Plot to answer question
+ggplot(data = atlantic_croaker_final) +
+  geom_point(aes(x=SST, y=Totallength)) +
+  geom_smooth(aes(x= SST,y=Totallength), method = "lm")
+##NO SIGNIFICANCE IN TEMPERATURE AND MORPHOLOGY
 ```
 p-value: 0.3649
 not a significant relationship
 
 Question 3
-Square caudal peduncle depth factor
+How does Square caudal peduncle depth factor vary with temperature?
 ```{r}
 #Linear model
 CPDF_linearmodel <- lm(square_caudal_peduncle_depth_factor ~ SST, atlantic_croaker_final) 
 summary(CPDF_linearmodel)
 
-#Plot
+#Plot for reference
 ggplot(data=atlantic_croaker_final) +
   geom_point(aes(x= SST, y=square_caudal_peduncle_depth_factor, color=factor(Year))) +
   geom_smooth(aes(x=SST, y= square_caudal_peduncle_depth_factor), method = "lm")
+
+#Plot to answer question
+ggplot(data=atlantic_croaker_final) +
+  geom_point(aes(x= SST, y=square_caudal_peduncle_depth_factor)) +
+  geom_smooth(aes(x=SST, y= square_caudal_peduncle_depth_factor), method = "lm") +
+  labs(x= "Temperature in Celsius", y= "Square Caudal Peduncle Depth Factor", title = "Relationship between Square Caudal Peduncle Depth Factor and Temperature") + 
+  theme_bw()
+
 ```
 p-value: 0.03942
+
+--------------------------------------------------------------------------------------------
+
+Other questions:
+#Question set 3
+ Does the month the fish got caught influence in their total length measurement?
+```{r}
+#Plot
+ggplot(data=atlantic_croaker_final) +
+  geom_point(aes(x=Month, y=Totallength, color=factor(Month)))
+
+#Statistical analysis
+wilcox.test(x= atcroaker95$Totallength,  y= atcroaker17$Totallength, alternative = c("two.sided"))
+```
+ 
+```{r}
+#Plot
+ggplot(data=atlantic_croaker_final) +
+  geom_point(aes(x=Month, y=Bodyarea, color=factor(Month)))
+
+#Statistical test
+wilcox.test(x=atcroaker95$Bodyarea, y=atcroaker17$Bodyarea, alternative = c("two.sided"))
+```
+ 
+```{r}
+#Plot
+ggplot(data = atlantic_croaker_final) +
+  geom_point(aes(x=Month, y=aspect_ratio, color=factor(Month)))
+
+#Statistical analysis
+wilcox.test(x=atcroaker95$aspect_ratio, y=atcroaker17$aspect_ratio, alternative = c("two.sided"))
+```
+ 
+```{r}
+#Plot
+ggplot(data = atlantic_croaker_final) +
+  geom_point(aes(x=Month, y=square_caudal_peduncle_depth_factor, color=factor(Month)))
+
+#Statistical analysis
+wilcox.test(x=atcroaker95$square_caudal_peduncle_depth_factor, y=atcroaker17$square_caudal_peduncle_depth_factor, alternative = c("two.sided"))
+```
+ 
+ 
