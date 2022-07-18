@@ -164,3 +164,6 @@ Worked on my analysis and created different plots in order to understand what ea
 Continued working with the data analysis and data cleaning
 Fixed the measurements of the fix in ObjectJ and then pulled out a new data frame
 Started creating a script for the 5MP
+
+#July 18
+Understanding how to interpret and explain my graphs for the 5MP, created axis and title for the graphs
