@@ -52,7 +52,9 @@ ggplot(data= atlantic_croaker_final, aes(x=aspect_ratio)) +
   facet_wrap(~Year)
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=Year, y=aspect_ratio, group= Year))
+  geom_boxplot(aes(x=Year, y=aspect_ratio, group= Year)) +
+  theme_bw()
+ggsave(path = "figures",filename = "aspect_ratio.jpg")
 
 #Statistical test
 wilcox.test(x=atcroaker95$aspect_ratio, y=atcroaker17$aspect_ratio, alternative = c("two.sided"))
@@ -67,7 +69,9 @@ ggplot(data= atlantic_croaker_final, aes(x=Totallength)) +
   facet_wrap(~Year)
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=Year, y=Totallength, group= Year))
+  geom_boxplot(aes(x=Year, y=Totallength, group= Year)) +
+  theme_bw()
+ggsave(path = "figures",filename = "total_length.jpg")
 
 #Statistical analysis
 wilcox.test(x=atcroaker95$Totallength, y=atcroaker17$Totallength , alternative=c("two.sided"))
@@ -82,7 +86,9 @@ ggplot(data= atlantic_croaker_final, aes(x=square_caudal_peduncle_depth_factor))
   facet_wrap(~Year) 
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=Year, y=square_caudal_peduncle_depth_factor, group= Year))
+  geom_boxplot(aes(x=Year, y=square_caudal_peduncle_depth_factor, group= Year))  +
+  theme_bw()
+ggsave(path = "figures",filename = "square_caudal.jpg")
 
 #Statistical analysis
 wilcox.test(x=atcroaker95$square_caudal_peduncle_depth_factor,  y=atcroaker17$square_caudal_peduncle_depth_factor, alternative = c("two.sided"))
@@ -151,6 +157,8 @@ ggplot(data=atlantic_croaker_final) +
   labs(x= "Temperature in Celsius", y= "Square Caudal Peduncle Depth Factor", title = "Relationship between Square Caudal Peduncle Depth Factor and Temperature") + 
   theme_bw()
 
+#save a figure as an image 
+ggsave(path = "figures",filename = "square_caudal_temp.jpg")
 ```
 p-value: 0.03942
 
