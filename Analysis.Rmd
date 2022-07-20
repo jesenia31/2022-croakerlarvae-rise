@@ -56,11 +56,13 @@ ggplot(data=atlantic_croaker_final) +
   geom_boxplot(aes(x=factor(Year), y=aspect_ratio, group= factor(Year), fill=factor(Year)), size=1) +
   scale_fill_manual(values = c("chartreuse", "chartreuse4"))+
   theme_bw() +
-  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=2))
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=factor(Year), y=aspect_ratio, group=factor(Year)), size=0.5) + theme_bw() +
-  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
+  geom_boxplot(aes(x=factor(Year), y=aspect_ratio, group=factor(Year)), size=0.5) + 
+  labs(x="Year", y="Aspect ratio") +
+  theme_bw() +
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=2))
 ggsave(path = "figures",filename = "aspectratio.jpg", height = 3, width = 6, units = "in")
 
 #Statistical test
@@ -76,8 +78,10 @@ ggplot(data= atlantic_croaker_final, aes(x=Totallength)) +
   facet_wrap(~Year)
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=factor(Year), y=Totallength, group=factor(Year)), size=0.5) + theme_bw() +
-  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
+  geom_boxplot(aes(x=factor(Year), y=Totallength, group=factor(Year)), size=0.5) + 
+  labs(x="Year", y="Total length")+
+  theme_bw() +
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=2))
 ggsave(path = "figures",filename = "Totallength.jpg", height = 3, width = 6, units = "in")
 
 
@@ -96,8 +100,10 @@ ggplot(data= atlantic_croaker_final, aes(x=square_caudal_peduncle_depth_factor))
   facet_wrap(~Year) 
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=factor(Year), y=square_caudal_peduncle_depth_factor, group=factor(Year)), size=0.5) + theme_bw() +
-  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
+  geom_boxplot(aes(x=factor(Year), y=square_caudal_peduncle_depth_factor, group=factor(Year)), size=0.5) + 
+  labs(x="Year", y="Caudal peduncle depth factor") +
+  theme_bw() +
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=2))
 ggsave(path = "figures",filename = "caudalpeduncle.jpg", height = 3, width = 6, units = "in")
 
 
