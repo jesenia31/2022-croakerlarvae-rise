@@ -49,12 +49,19 @@ Is aspect ratio higher in fish from 1995 than fish from 2017?
 #Making a plot
 ggplot(data= atlantic_croaker_final, aes(x=aspect_ratio)) +
   geom_histogram() +
-  facet_wrap(~Year)
+  facet_wrap(~Year) 
+ 
+#plot with color
+ggplot(data=atlantic_croaker_final) +
+  geom_boxplot(aes(x=factor(Year), y=aspect_ratio, group= factor(Year), fill=factor(Year)), size=1) +
+  scale_fill_manual(values = c("chartreuse", "chartreuse4"))+
+  theme_bw() +
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=Year, y=aspect_ratio, group= Year)) +
-  theme_bw()
-ggsave(path = "figures",filename = "aspect_ratio.jpg")
+  geom_boxplot(aes(x=factor(Year), y=aspect_ratio, group=factor(Year)), size=0.5) + theme_bw() +
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
+ggsave(path = "figures",filename = "aspectratio.jpg", height = 3, width = 6, units = "in")
 
 #Statistical test
 wilcox.test(x=atcroaker95$aspect_ratio, y=atcroaker17$aspect_ratio, alternative = c("two.sided"))
@@ -69,8 +76,11 @@ ggplot(data= atlantic_croaker_final, aes(x=Totallength)) +
   facet_wrap(~Year)
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=Year, y=Totallength, group= Year)) +
-  theme_bw()
+  geom_boxplot(aes(x=factor(Year), y=Totallength, group=factor(Year)), size=0.5) + theme_bw() +
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
+ggsave(path = "figures",filename = "Totallength.jpg", height = 3, width = 6, units = "in")
+
+
 ggsave(path = "figures",filename = "total_length.jpg")
 
 #Statistical analysis
@@ -86,9 +96,10 @@ ggplot(data= atlantic_croaker_final, aes(x=square_caudal_peduncle_depth_factor))
   facet_wrap(~Year) 
 
 ggplot(data=atlantic_croaker_final) +
-  geom_boxplot(aes(x=Year, y=square_caudal_peduncle_depth_factor, group= Year))  +
-  theme_bw()
-ggsave(path = "figures",filename = "square_caudal.jpg")
+  geom_boxplot(aes(x=factor(Year), y=square_caudal_peduncle_depth_factor, group=factor(Year)), size=0.5) + theme_bw() +
+  theme(axis.text = element_text(size=12), panel.border = element_rect(size=4))
+ggsave(path = "figures",filename = "caudalpeduncle.jpg", height = 3, width = 6, units = "in")
+
 
 #Statistical analysis
 wilcox.test(x=atcroaker95$square_caudal_peduncle_depth_factor,  y=atcroaker17$square_caudal_peduncle_depth_factor, alternative = c("two.sided"))
