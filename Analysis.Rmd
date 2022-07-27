@@ -131,6 +131,8 @@ ggplot(data=atlantic_croaker_final) +
   geom_smooth(aes(x=SST, y=aspect_ratio), method = "lm") +
   labs(x= "Temperature in Celsius", y= "Aspect Ratio", title = "Relationship between Aspect Ratio and Temperature") +
   theme_bw()
+
+ggsave(path = "figures",filename = "aspect_ratio_temp.jpg")
 ```
 p-value: 0.001113
 
@@ -149,8 +151,12 @@ ggplot(data = atlantic_croaker_final) +
 #Plot to answer question
 ggplot(data = atlantic_croaker_final) +
   geom_point(aes(x=SST, y=Totallength)) +
-  geom_smooth(aes(x= SST,y=Totallength), method = "lm")
+  geom_smooth(aes(x= SST,y=Totallength), method = "lm") +
+  labs(x= "Temperature in Celsius", y= "Total Length", title = "Relationship between Total Length and Temperature") +
+  theme_bw()
 ##NO SIGNIFICANCE IN TEMPERATURE AND MORPHOLOGY
+
+ggsave(path = "figures",filename = "total_length_temp.jpg")
 ```
 p-value: 0.3649
 not a significant relationship
@@ -179,7 +185,6 @@ ggsave(path = "figures",filename = "square_caudal_temp.jpg")
 ```
 p-value: 0.03942
 
---------------------------------------------------------------------------------------------
 
 Other questions:
 #Question set 3
