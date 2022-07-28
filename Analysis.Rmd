@@ -129,10 +129,10 @@ ggplot(data=atlantic_croaker_final) +
 ggplot(data=atlantic_croaker_final) +
   geom_point(aes(x=SST, y=aspect_ratio)) +
   geom_smooth(aes(x=SST, y=aspect_ratio), method = "lm") +
-  labs(x= "Temperature in Celsius", y= "Aspect Ratio", title = "Relationship between Aspect Ratio and Temperature") +
+  labs(x= "Temperature in Celsius", y= "Aspect Ratio") +
   theme_bw()
 
-ggsave(path = "figures",filename = "aspect_ratio_temp.jpg")
+ggsave(path = "figures",filename = "aspect_ratio_temp.jpg", height = 4, width = 4, units = "in")
 ```
 p-value: 0.001113
 
@@ -152,11 +152,11 @@ ggplot(data = atlantic_croaker_final) +
 ggplot(data = atlantic_croaker_final) +
   geom_point(aes(x=SST, y=Totallength)) +
   geom_smooth(aes(x= SST,y=Totallength), method = "lm") +
-  labs(x= "Temperature in Celsius", y= "Total Length", title = "Relationship between Total Length and Temperature") +
+  labs(x= "Temperature in Celsius", y= "Total Length") +
   theme_bw()
 ##NO SIGNIFICANCE IN TEMPERATURE AND MORPHOLOGY
 
-ggsave(path = "figures",filename = "total_length_temp.jpg")
+ggsave(path = "figures",filename = "total_length_temp.jpg", height = 4, width = 4, units = "in")
 ```
 p-value: 0.3649
 not a significant relationship
@@ -177,11 +177,11 @@ ggplot(data=atlantic_croaker_final) +
 ggplot(data=atlantic_croaker_final) +
   geom_point(aes(x= SST, y=square_caudal_peduncle_depth_factor)) +
   geom_smooth(aes(x=SST, y= square_caudal_peduncle_depth_factor), method = "lm") +
-  labs(x= "Temperature in Celsius", y= "Square Caudal Peduncle Depth Factor", title = "Relationship between Square Caudal Peduncle Depth Factor and Temperature") + 
+  labs(x= "Temperature in Celsius", y= "Square Caudal Peduncle Depth Factor") + 
   theme_bw()
 
 #save a figure as an image 
-ggsave(path = "figures",filename = "square_caudal_temp.jpg")
+ggsave(path = "figures",filename = "square_caudal_temp.jpg", height = 4, width = 4, units = "in")
 ```
 p-value: 0.03942
 
